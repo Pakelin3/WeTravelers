@@ -11,7 +11,7 @@
 
 <body>
     <!--Cabecera de la pagina -->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top" data-bs-theme="dark" style="height: 75px;">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top" data-bs-theme="dark" style="height: 75px;">
         <div class="container-fluid">
             <a class="navbar-brand" href="/Index/Index.html">We Travelers</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -32,7 +32,7 @@
                             aria-expanded="false">
                             Usuario
                         </a>
-                        <ul class="dropdown-menu " style="margin-right: 150px;">
+                        <ul class="dropdown-menu" style="margin-right: 150px;">
                             <li><a class="dropdown-item" href="#">Ver Perfil</a></li>
                             <li><a class="dropdown-item" href="#">Localización</a></li>
                             <li>
@@ -51,60 +51,45 @@
                         <a class="nav-link active" aria-current="page" href="#">Publicar</a>
                     </li>
                 </ul>
-                <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
-                    <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center" id="bd-theme"
-                        type="button" aria-expanded="false" data-bs-toggle="dropdown" aria-label="Toggle theme (auto)">
-                        <svg class="bi my-1 theme-icon-active" width="1em" height="1em">
-                            <use href="#circle-half"></use>
-                        </svg>
-                        <span class="visually-hidden" id="bd-theme-text">Toggle theme</span>
-                    </button>
-                    <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
-                        <li>
-                            <button type="button" class="dropdown-item d-flex align-items-center"
-                                data-bs-theme-value="light" aria-pressed="false">
-                                <svg class="bi me-2 opacity-50" width="1em" height="1em">
-                                    <use href="#sun-fill"></use>
-                                </svg>
-                                Light
-                                <svg class="bi ms-auto d-none" width="1em" height="1em">
-                                    <use href="#check2"></use>
-                                </svg>
-                            </button>
-                        </li>
-                        <li>
-                            <button type="button" class="dropdown-item d-flex align-items-center"
-                                data-bs-theme-value="dark" aria-pressed="false">
-                                <svg class="bi me-2 opacity-50" width="1em" height="1em">
-                                    <use href="#moon-stars-fill"></use>
-                                </svg>
-                                Dark
-                                <svg class="bi ms-auto d-none" width="1em" height="1em">
-                                    <use href="#check2"></use>
-                                </svg>
-                            </button>
-                        </li>
-                        <li>
-                            <button type="button" class="dropdown-item d-flex align-items-center active"
-                                data-bs-theme-value="auto" aria-pressed="true">
-                                <svg class="bi me-2 opacity-50" width="1em" height="1em">
-                                    <use href="#circle-half"></use>
-                                </svg>
-                                Auto
-                                <svg class="bi ms-auto d-none" width="1em" height="1em">
-                                    <use href="#check2"></use>
-                                </svg>
-                            </button>
-                        </li>
-                    </ul>
-                </div>
             </div>
         </div>
     </nav>
 
     <!--Panel lateral-->
-    <div id="Sidebar" class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark"
-        style="height: calc(100vh - 75px); width: 280px;">
+    <div id="panel-lateral" class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark fixed-top z-1"
+        style="height: calc(100vh - 75px ); width: 280px; top:75px;">
+        <style>
+            @media (max-width: 800px) {
+                #panel-lateral {
+                    width: 4.5rem !important;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                .icon {
+                    margin-right: 0 !important;
+                    margin-bottom: 5px;
+                    height: 50px;
+                    width: 40px;
+                }
+
+                #panel-lateral ul,
+                li,
+                span.fs-4,
+                strong {
+                    font-size: 0;
+                }
+
+                #panel-lateral span {
+                    display: none;
+                }
+
+                .dropdown-item {
+                    font-size: 1rem;
+                }
+
+            }
+        </style>
         <a href="#" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="40" height="40"
                 viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round"
@@ -119,7 +104,7 @@
         <hr>
         <ul class="nav nav-pills flex-column mb-auto">
             <li>
-                <a href="#" class="nav-link active">
+                <a href="/Explorar/Index_Explorar.html" class="nav-link active">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-map-pin" width="25"
                         height="25" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none"
                         stroke-linecap="round" stroke-linejoin="round">
@@ -160,58 +145,11 @@
                 </a>
             </li>
         </ul>
-        <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
-            <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center" id="bd-theme"
-                type="button" aria-expanded="false" data-bs-toggle="dropdown" aria-label="Toggle theme (auto)">
-                <svg class="bi my-1 theme-icon-active" width="1em" height="1em">
-                    <use href="#circle-half"></use>
-                </svg>
-                <span class="visually-hidden" id="bd-theme-text">Toggle theme</span>
-            </button>
-            <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
-                <li>
-                    <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light"
-                        aria-pressed="false">
-                        <svg class="bi me-2 opacity-50" width="1em" height="1em">
-                            <use href="#sun-fill"></use>
-                        </svg>
-                        Light
-                        <svg class="bi ms-auto d-none" width="1em" height="1em">
-                            <use href="#check2"></use>
-                        </svg>
-                    </button>
-                </li>
-                <li>
-                    <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark"
-                        aria-pressed="false">
-                        <svg class="bi me-2 opacity-50" width="1em" height="1em">
-                            <use href="#moon-stars-fill"></use>
-                        </svg>
-                        Dark
-                        <svg class="bi ms-auto d-none" width="1em" height="1em">
-                            <use href="#check2"></use>
-                        </svg>
-                    </button>
-                </li>
-                <li>
-                    <button type="button" class="dropdown-item d-flex align-items-center active"
-                        data-bs-theme-value="auto" aria-pressed="true">
-                        <svg class="bi me-2 opacity-50" width="1em" height="1em">
-                            <use href="#circle-half"></use>
-                        </svg>
-                        Auto
-                        <svg class="bi ms-auto d-none" width="1em" height="1em">
-                            <use href="#check2"></use>
-                        </svg>
-                    </button>
-                </li>
-            </ul>
-        </div>
         <hr>
         <div class="dropdown">
             <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
                 data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+                <img src="/rsc/images/messi.webp" alt="" width="32" height="32" class="rounded-circle me-2">
                 <strong>Usuario</strong>
             </a>
             <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
@@ -225,6 +163,8 @@
             </ul>
         </div>
     </div>
+
+
     <div id="map-container" class="d-flex position-absolute" style="left: 280px; top: 75px; right: 0; bottom: 0;">
         <div id="map"></div>
     </div>
