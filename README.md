@@ -1,4 +1,4 @@
-We-Travelers
+<h1 align="center" id="title">We Travelers</h1>
 Bienvenido a We-Travelers, una aplicación para viajeros que buscan explorar el mundo de una manera única y emocionante.
 
 Descripción
