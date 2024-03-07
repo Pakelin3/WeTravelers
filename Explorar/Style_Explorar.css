@@ -1,0 +1,11 @@
+#map-container {
+    height: calc(100vh - 75px);
+    /* Resta la altura del navbar */
+    width: calc(100vw - 280px);
+    /* Resta el ancho del sidebar */
+}
+
+#map {
+    height: 100%;
+    width: 100%;
+}

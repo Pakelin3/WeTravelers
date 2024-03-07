@@ -1,0 +1,58 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="Login_Style.css">
+    <title>WAYN Login</title>
+</head>
+
+<body>
+    <div class="main">
+        <div class="contenedor a-contenedor" id="a-contenedor">
+            <form class="form" id="a-form" method="post" action="">
+                <h2 class="title">Crear cuenta</h2>
+                <span class="form__span">Use su email para registrarse</span>
+                <input class="form__input" type="text" placeholder="Nombre" name="Nombre" id="Nombre" />
+                <input class="form__input" type="text" placeholder="placeholder@example.com" name="Email" id="Email" />
+                <input class="form__input" type="password" placeholder="Contraseña" name="password" id="password" />
+                <button class="boton subir">Registrarse</button>
+            </form>
+        </div>
+
+        <div class="contenedor b-contenedor" id="b-contenedor">
+            <form class="form" id="b-form" method="post" action="Conexion/validar.php">
+
+                <h2 class="title">Acceder al sitio web</h2>
+                <span class="form__span">Utilice su correo electrónico</span>
+                <input class="form__input" type="text" placeholder="Email" name="email" id="email" required
+                    pattern=".*@.*" />
+                <input class="form__input" type="password" placeholder="Contraseña" name="password" id="password"
+                    required minlength="5" />
+
+                <a class="form__link">¿Ha olvidado su contraseña?</a>
+                <button class="boton subir">Iniciar sesión</button>
+            </form>
+        </div>
+
+
+        <div class="switch" id="switch-cnt">
+            <div class="switch__contenedor" id="switch-c1">
+                <h2 class="switch__title title">Iniciar sesión</h2>
+                <p class="descripcion">Para mantenerse conectado con nosotros, inicie sesión.
+                </p>
+                <button class="switch__boton boton switch-btn">Inicia sesión</button>
+            </div>
+
+            <div class="switch__contenedor is-hidden" id="switch-c2">
+                <h2 class="switch__title title">Registrarse</h2>
+                <p class="descripcion">Introduzca sus datos personales y conozca el mundo con nosotros</p>
+                <button class="switch__boton boton switch-btn">Regístrate</button>
+            </div>
+        </div>
+    </div>
+    <script src="Login_Funtion.js"></script>
+</body>
+
+</html>
