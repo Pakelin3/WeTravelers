@@ -25,7 +25,7 @@
 }
 
 .people-list .chat-list li:hover {
-    background: #333333;
+    background: #1d4438;
     cursor: pointer;
 }
 
@@ -77,6 +77,10 @@
 
     .chat-app .chat .chat-header {
         border-radius: 0.55rem 0.55rem 0 0;
+        -webkit-border-radius: 0.55rem 0.55rem 0 0;
+        -moz-border-radius: 0.55rem 0.55rem 0 0;
+        -ms-border-radius: 0.55rem 0.55rem 0 0;
+        -o-border-radius: 0.55rem 0.55rem 0 0;
     }
 
     .chat-app .chat-history {
@@ -107,4 +111,8 @@
         height: calc(100vh - 350px);
         overflow-x: auto;
     }
+}
+
+.nav-link:hover {
+    background-color: #1d2044;
 }

@@ -37,7 +37,7 @@
 }
 
 .people-list .chat-list li:hover {
-    background: #333333;
+    background: #1d4438;
     cursor: pointer;
 }
 
@@ -119,4 +119,8 @@
         height: calc(100vh - 350px);
         overflow-x: auto;
     }
+}
+
+.nav-link:hover {
+    background-color: #1d2044;
 }
