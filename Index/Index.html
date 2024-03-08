@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>We Travelers</title>
     <link rel="stylesheet" href="/Bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/Index/Css_Index.CSS">
+    <link rel="stylesheet" href="/Index/Index_Style.css">
 </head>
 
 <body>
@@ -56,14 +56,18 @@
     </nav>
 
     <!--Panel lateral-->
-    <div id="panel-lateral" class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark fixed-top z-1"
+    <div id="panel-lateral" class=" flex-column flex-shrink-0 p-3 text-bg-dark fixed-top z-1"
         style="height: calc(100vh - 75px ); width: 280px; top:75px;">
         <style>
             @media (max-width: 800px) {
-                #panel-lateral {
+
+                #panel-lateral,
+                .nav-link {
                     width: 4.5rem !important;
                     justify-content: center;
                     align-items: center;
+                    display: ruby-base-container;
+
                 }
 
                 .icon {
@@ -80,7 +84,9 @@
                     font-size: 0;
                 }
 
-                #panel-lateral span {
+                #panel-lateral span,
+                .people-list,
+                #separador {
                     display: none;
                 }
 
@@ -146,10 +152,66 @@
             </li>
         </ul>
         <hr>
-        <div class="dropdown">
+        <div id="plist" class="people-list">
+            <style>
+                @media (max-height: 800px) {
+                    .people-list {
+                        display: none;
+                    }
+                }
+            </style>
+            <ul class="list-unstyled chat-list mt-2 mb-0">
+                <li class="clearfix">
+                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="avatar">
+                    <div class="about">
+                        <div class="name">Luis Rodriguez</div>
+                        <div class="status"> <i class="fa fa-circle offline"></i> Ultima vez hace 7 min </div>
+                    </div>
+                </li>
+                <li class="clearfix">
+                    <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="avatar">
+                    <div class="about">
+                        <div class="name">Moises Gómez</div>
+                        <div class="status"> <i class="fa fa-circle online"></i> En linea </div>
+                    </div>
+                </li>
+                <li class="clearfix">
+                    <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="avatar">
+                    <div class="about">
+                        <div class="name">Maria Becerra</div>
+                        <div class="status"> <i class="fa fa-circle online"></i> En linea </div>
+                    </div>
+                </li>
+                <li class="clearfix">
+                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="avatar">
+                    <div class="about">
+                        <div class="name">Cesar Requena</div>
+                        <div class="status"> <i class="fa fa-circle offline"></i> Ultima vez hace 10 horas </div>
+                    </div>
+                </li>
+                <li class="clearfix">
+                    <img src="https://bootdey.com/img/Content/avatar/avatar8.png" alt="avatar">
+                    <div class="about">
+                        <div class="name">Mia Khalifa</div>
+                        <div class="status"> <i class="fa fa-circle online"></i> En linea </div>
+                    </div>
+                </li>
+                <li class="clearfix">
+                    <img src="https://bootdey.com/img/Content/avatar/avatar5.png" alt="avatar">
+                    <div class="about">
+                        <div class="name">Daniel Alarcon</div>
+                        <div class="status"> <i class="fa fa-circle offline"></i> Ultima conexion: 28 oct </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <hr id="separador" style="bottom: 65px; position: absolute; width: 248px;">
+        <div class="dropdown position-fixed" style="bottom: 20px;">
+
             <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
                 data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="/rsc/images/messi.webp" alt="" width="32" height="32" class="rounded-circle me-2">
+                <img src="/rsc/images/messi.webp" alt="" width="45" height="45" class="rounded-circle me-2">
                 <strong>Usuario</strong>
             </a>
             <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
