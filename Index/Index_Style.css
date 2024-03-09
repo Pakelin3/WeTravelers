@@ -1,14 +1,3 @@
-.card {
-    background: #fff;
-    transition: .5s;
-    border: 0;
-    margin-bottom: 30px;
-    border-radius: .55rem;
-    position: relative;
-    width: 100%;
-    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 10%);
-}
-
 .chat-app .people-list {
     width: 280px;
     position: absolute;
@@ -114,5 +103,100 @@
 }
 
 .nav-link:hover {
-    background-color: #1d2044;
+    background-color: #424244;
+}
+
+#feed-container {
+    margin-top: 140px;
+    margin-left: 280px;
+}
+
+.card {
+    width: 600px;
+    transition: .5s;
+    margin-bottom: 30px;
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 10%);
+}
+
+.card-header {
+    padding: .75rem 15px;
+    margin-bottom: 0;
+    background-color: #c9c9c9;
+}
+
+.card-body {
+    padding: 15px;
+    background-color: #c9c9c9;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.publicacion-likes {
+    width: 150px;
+    margin-left: 100px;
+    text-align: right;
+}
+
+#boton-opciones {
+    max-width: 100%;
+}
+
+#boton-opciones svg {
+    width: 100%;
+    /* Haz que el SVG sea responsive dentro del botón */
+    height: auto;
+    /* Mantiene la proporción del SVG */
+}
+
+#boton-like {
+    max-width: 100%;
+}
+
+#boton-like svg {
+    width: 100%;
+    /* Haz que el SVG sea responsive dentro del botón */
+    height: auto;
+    /* Mantiene la proporción del SVG */
+}
+
+.titulo {
+    display: inline-block;
+}
+
+.btn-link {
+    float: right;
+    color: gray;
+    padding-right: 0px;
+}
+
+.comentario {
+    color: #CDCCCC;
+    width: 90%;
+    margin-left: 10px;
+    /* Ajusta este valor según tus necesidades */
+}
+
+@media (max-width: 799px) {
+    #feed-container {
+        flex-direction: column;
+        align-items: center;
+        margin-left: 80px;
+        margin-right: 10px;
+        /* Cambiar a un diseño de columna cuando el ancho es menor a 800px */
+    }
+
+    #boton-opciones,
+    #boton-like {
+        width: 30px;
+        height: 30px;
+    }
+
+    .card {
+        flex-basis: calc(100% - 25px);
+        /* Ancho de tarjeta para una columna */
+        width: 100%;
+        max-width: 400px;
+    }
 }

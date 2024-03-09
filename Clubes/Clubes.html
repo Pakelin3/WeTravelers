@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>We Travelers</title>
+    <title>Clubes</title>
     <link rel="stylesheet" href="/Bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/Explorar/Style_Explorar.css">
+    <link rel="stylesheet" href="/Clubes/Style_Clubes.css">
 </head>
 
 <body>
@@ -48,9 +48,34 @@
                         <a class="nav-link " href="#">Mensajes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Publicar</a>
+                        <button data-toggle="modal" data-target="#exampleModal" type="button"
+                            class="btn btn-secondary">Publicar</button>
                     </li>
                 </ul>
+
+                <!--Modal-->
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <textarea class="form-control" id="message-text"></textarea>
+                                </div>
+                                <button type="button" class="btn btn-light btn-sm">
+                                    <i class="fas fa-camera"></i>
+                                </button>
+                                <button type="button" class="btn btn-light btn-sm">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </button>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                <button type="button" class="btn btn-success">Publicar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
@@ -99,6 +124,10 @@
                     font-size: 1rem;
                 }
 
+                #Usuario {
+                    margin-right: 0 !important;
+                }
+
             }
         </style>
         <a href="#" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
@@ -115,7 +144,7 @@
         <hr id="separador">
         <ul class="nav nav-pills flex-column mb-auto">
             <li>
-                <a href="/Explorar/Index_Explorar.html" class="nav-link active">
+                <a href="/Explorar/Explorar.html" class="nav-link text-white">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-map-pin" width="25"
                         height="25" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none"
                         stroke-linecap="round" stroke-linejoin="round">
@@ -127,7 +156,7 @@
                 </a>
             </li>
             <li>
-                <a href="#" class="nav-link text-white">
+                <a href="/Rutas/Rutas.html" class="nav-link text-white">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-route" width="25"
                         height="25" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none"
                         stroke-linecap="round" stroke-linejoin="round">
@@ -140,7 +169,7 @@
                 </a>
             </li>
             <li>
-                <a href="#" class="nav-link text-white">
+                <a href="/Clubes/Clubes.html" class="nav-link active">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-users-group" width="25"
                         height="25" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none"
                         stroke-linecap="round" stroke-linejoin="round">
@@ -213,10 +242,10 @@
 
         <hr id="separador" style="bottom: 65px; position: absolute; width: 248px;">
         <div class="dropdown position-fixed" style="bottom: 20px;">
-
             <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
                 data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="/rsc/images/messi.webp" alt="" width="45" height="45" class="rounded-circle me-2">
+                <img id="Usuario" src="/rsc/images/messi.webp" alt="" width="45" height="45"
+                    class="rounded-circle me-2">
                 <strong>Usuario</strong>
             </a>
             <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
@@ -230,20 +259,8 @@
             </ul>
         </div>
     </div>
-
-
-    <div id="map-container" class="d-flex position-absolute" style="left: 280px; top: 75px; right: 0; bottom: 0;">
-        <div id="map"></div>
-    </div>
-
-
-
-    <script src="/Explorar/Funtion_Explorar.js"></script>
+    <script src=""></script>
     <script src="/Bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDaeWicvigtP9xPv919E-RNoxfvC-Hqik&callback=iniciarMap"></script>
-
-
 </body>
 
 </html>

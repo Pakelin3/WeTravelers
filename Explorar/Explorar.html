@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>We Travelers</title>
     <link rel="stylesheet" href="/Bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/Index/Index_Style.css">
+    <link rel="stylesheet" href="/Explorar/Style_Explorar.css">
 </head>
 
 <body>
@@ -48,9 +48,8 @@
                         <a class="nav-link " href="#">Mensajes</a>
                     </li>
                     <li class="nav-item">
-                        <button data-toggle="modal" data-target="#exampleModal" class="btn btn-success"
-                            type="button">Crear un nuevo
-                            post</button>
+                        <button data-toggle="modal" data-target="#exampleModal" type="button"
+                            class="btn btn-secondary">Publicar</button>
                     </li>
                 </ul>
             </div>
@@ -101,10 +100,6 @@
                     font-size: 1rem;
                 }
 
-                #Usuario {
-                    margin-right: 0 !important;
-                }
-
             }
         </style>
         <a href="#" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
@@ -121,7 +116,7 @@
         <hr id="separador">
         <ul class="nav nav-pills flex-column mb-auto">
             <li>
-                <a href="/Explorar/Explorar.html" class="nav-link text-white">
+                <a href="/Explorar/Explorar.html" class="nav-link active">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-map-pin" width="25"
                         height="25" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none"
                         stroke-linecap="round" stroke-linejoin="round">
@@ -222,8 +217,7 @@
 
             <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
                 data-bs-toggle="dropdown" aria-expanded="false">
-                <img id="Usuario" src="/rsc/images/messi.webp" alt="" width="45" height="45"
-                    class="rounded-circle me-2">
+                <img src="/rsc/images/messi.webp" alt="" width="45" height="45" class="rounded-circle me-2">
                 <strong>Usuario</strong>
             </a>
             <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
@@ -238,99 +232,19 @@
         </div>
     </div>
 
-    <div id="feed-container" class="d-flex flex-wrap justify-content-around">
-        <div class="card">
-            <div class="card-header">
-                <img id="Usuario" src="/rsc/images/messi.webp" alt="" width="50" height="50"
-                    class="rounded-circle me-2">
-                <strong>Usuario</strong>
-                <button id="ubicacion" type="button" class="btn btn-link">Nidwalden / Suiza</button>
-            </div>
-            <img src="https://picsum.photos/id/678/550/400" class="feed-img-top" alt="...">
-            <div class="card-body">
-                <h3 class="titulo">Enamorado de suiza </h2>
-                    <h5 class="publicacion-likes">23 Likes</h5>
-                    <button id="boton-like" type="button" class="btn btn-light btn-sm">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-heart" width="24"
-                            height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                            <path d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
-                        </svg>
-                    </button>
-                    <p class="publicacion-descripcion">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
-                        non
-                        elit ornare, interdum
-                        libero id, ultrices sem. Duis molestie elementum ipsum et eleifend. Nunc porta.</p>
-                    <input type="text" class="form-control comentario" id="recipient-name"
-                        placeholder="Escriba un comentario...">
-                    <button id="boton-opciones" type="button" class="btn btn-light btn-sm">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-dots-vertical"
-                            width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                            fill="none" stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                            <path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
-                            <path d="M12 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
-                            <path d="M12 5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
-                        </svg>
-                    </button>
-            </div>
-        </div>
+
+    <div id="map-container" class="d-flex position-absolute" style="left: 280px; top: 75px; right: 0; bottom: 0;">
+        <div id="map"></div>
     </div>
 
-    <!--Modal-->
-    <div class="modal fade" id="exampleModal" tabindex="0" role="dialog" aria-labelledby="exampleModalCenterTitle"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <form action="">
-                        <input type="text" class="form-control" id="titulo-publicacion" placeholder="Ponle un titulo"
-                            style="margin-bottom: 15px;">
-                        <textarea class="form-control" id="message-text" placeholder="Añade una descripcion"></textarea>
-                    </form>
-                    <button type="button" class="btn btn-light btn-sm" style="margin-top: 10px;">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-photo" width="24"
-                            height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                            <path d="M15 8h.01" />
-                            <path d="M3 6a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v12a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3v-12z" />
-                            <path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l5 5" />
-                            <path d="M14 14l1 -1c.928 -.893 2.072 -.893 3 0l3 3" />
-                        </svg>
-                    </button>
-                    <button type="button" class="btn btn-light btn-sm" style="margin-top: 10px;">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-map-pin" width="25"
-                            height="25" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                            <path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
-                            <path
-                                d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z" />
-                        </svg>
-                    </button>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-success">Publicar</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
 
-    <script src="/Index/Index_Funtion.js"></script>
+    <script src="/Explorar/Funtion_Explorar.js"></script>
     <script src="/Bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDaeWicvigtP9xPv919E-RNoxfvC-Hqik&callback=iniciarMap"></script>
+
+
 </body>
 
 </html>
