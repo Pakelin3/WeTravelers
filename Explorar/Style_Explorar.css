@@ -30,6 +30,12 @@
     z-index: 7;
 }
 
+.chat-list {
+    min-height: 85px;
+    max-height: 350px;
+    overflow-y: auto;
+}
+
 .people-list .chat-list li {
     padding: 10px 15px;
     list-style: none;
