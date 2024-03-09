@@ -54,8 +54,8 @@ $(document).ready(function () {
         adjustListHeight();
     });
 
-    // También puedes ajustar la altura de la lista cuando cambie el contenido del sidebar
-    // Por ejemplo, si se agregan o eliminan elementos del sidebar
+    // se puede ajustar la altura de la lista cuando cambie el contenido del sidebar
+    // en dado caso que se agregen o eliminen elementos del sidebar
     // $("#sidebar").on("change", function() {
     //     adjustListHeight();
     // });
