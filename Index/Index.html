@@ -66,8 +66,13 @@
                     width: 4.5rem !important;
                     justify-content: center;
                     align-items: center;
-                    display: ruby-base-container;
+                    display: flex;
 
+                }
+
+                #map-container {
+                    left: 72px !important;
+                    width: 100%;
                 }
 
                 .icon {
@@ -94,6 +99,10 @@
                     font-size: 1rem;
                 }
 
+                #Usuario {
+                    margin-right: 0 !important;
+                }
+
             }
         </style>
         <a href="#" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
@@ -107,7 +116,7 @@
             </svg>
             <span class="fs-4">Inicio</span>
         </a>
-        <hr>
+        <hr id="separador">
         <ul class="nav nav-pills flex-column mb-auto">
             <li>
                 <a href="/Explorar/Index_Explorar.html" class="nav-link text-white">
@@ -211,7 +220,8 @@
 
             <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
                 data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="/rsc/images/messi.webp" alt="" width="45" height="45" class="rounded-circle me-2">
+                <img id="Usuario" src="/rsc/images/messi.webp" alt="" width="45" height="45"
+                    class="rounded-circle me-2">
                 <strong>Usuario</strong>
             </a>
             <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
