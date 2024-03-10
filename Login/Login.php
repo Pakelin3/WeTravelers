@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE-edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="Login_Style.css">
-    <title>WAYN Login</title>
+    <title>We Travelers Login</title>
 
     <script>
     function contarCaracteresEspeciales(valor) {
@@ -72,7 +72,7 @@
 
                 <span class="form__span">Use su email para registrarse</span>
                 <input class="form__input" type="text" placeholder="Nombre" name="name" id="name" />
-                <input class="form__input" type="text" placeholder="Email" name="email" id="email" required
+                <input class="form__input" type="text" placeholder="name@example.com" name="email" id="email" required
                     pattern=".*@.*" />
                 <input class="form__input" type="password" placeholder="Contraseña" name="password" id="password"
                     required minlength="7" oninput="validarInput(this)" />
@@ -100,7 +100,7 @@
                 ?>
 
                 <span class="form__span">Utilice su correo electrónico</span>
-                <input class="form__input" type="text" placeholder="Email" name="email" id="email" required
+                <input class="form__input" type="text" placeholder="name@example.com" name="email" id="email" required
                     pattern=".*@.*" />
                 <input class="form__input" type="password" placeholder="Contraseña" name="password" id="password"
                     required minlength="2" />
@@ -112,8 +112,8 @@
 
         <div class="switch" id="switch-cnt">
             <div class="switch__contenedor" id="switch-c1">
-                <h2 class="title">Iniciar sesión</h2>
-                <p class="descripcion">Para mantenerse conectado con nosotros, inicie sesión con su información personal
+                <h2 class="title switch__title">Iniciar sesión</h2>
+                <p class="descripcion">Para mantenerse conectado con nosotros, inicie sesión
                 </p>
                 <button class="switch__boton boton switch-btn">Inicia sesión</button>
             </div>

@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clubes</title>
-    <link rel="stylesheet" href="/Bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/Clubes/Style_Clubes.css">
+    <link rel="stylesheet" href="../Bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="Style_Clubes.css">
 </head>
 
 <body>
@@ -60,51 +60,51 @@
     <div id="panel-lateral" class=" flex-column flex-shrink-0 p-3 text-bg-dark fixed-top z-1"
         style="height: calc(100vh - 75px ); width: 280px; top:75px;">
         <style>
-            @media (max-width: 800px) {
+        @media (max-width: 800px) {
 
-                #panel-lateral,
-                .nav-link {
-                    width: 4.5rem !important;
-                    justify-content: center;
-                    align-items: center;
-                    display: flex;
-
-                }
-
-                #map-container {
-                    left: 72px !important;
-                    width: 100%;
-                }
-
-                .icon {
-                    margin-right: 0 !important;
-                    margin-bottom: 5px;
-                    height: 50px;
-                    width: 40px;
-                }
-
-                #panel-lateral ul,
-                li,
-                span.fs-4,
-                strong {
-                    font-size: 0;
-                }
-
-                #panel-lateral span,
-                .people-list,
-                #separador {
-                    display: none;
-                }
-
-                .dropdown-item {
-                    font-size: 1rem;
-                }
-
-                #Usuario {
-                    margin-right: 0 !important;
-                }
+            #panel-lateral,
+            .nav-link {
+                width: 4.5rem !important;
+                justify-content: center;
+                align-items: center;
+                display: flex;
 
             }
+
+            #map-container {
+                left: 72px !important;
+                width: 100%;
+            }
+
+            .icon {
+                margin-right: 0 !important;
+                margin-bottom: 5px;
+                height: 50px;
+                width: 40px;
+            }
+
+            #panel-lateral ul,
+            li,
+            span.fs-4,
+            strong {
+                font-size: 0;
+            }
+
+            #panel-lateral span,
+            .people-list,
+            #separador {
+                display: none;
+            }
+
+            .dropdown-item {
+                font-size: 1rem;
+            }
+
+            #Usuario {
+                margin-right: 0 !important;
+            }
+
+        }
         </style>
         <a href="#" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="40" height="40"
@@ -120,7 +120,7 @@
         <hr id="separador">
         <ul class="nav nav-pills flex-column mb-auto">
             <li>
-                <a href="/Explorar/Explorar.html" class="nav-link text-white">
+                <a href="../Explorar/Explorar.php" class="nav-link text-white">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-map-pin" width="25"
                         height="25" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none"
                         stroke-linecap="round" stroke-linejoin="round">
@@ -132,7 +132,7 @@
                 </a>
             </li>
             <li>
-                <a href="/Rutas/Rutas.html" class="nav-link text-white">
+                <a href="../Rutas/Rutas.php" class="nav-link text-white">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-route" width="25"
                         height="25" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none"
                         stroke-linecap="round" stroke-linejoin="round">
@@ -145,7 +145,7 @@
                 </a>
             </li>
             <li>
-                <a href="/Clubes/Clubes.html" class="nav-link active">
+                <a href="Clubes.php" class="nav-link active">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-users-group" width="25"
                         height="25" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none"
                         stroke-linecap="round" stroke-linejoin="round">
@@ -213,7 +213,7 @@
         <div class="dropdown position-fixed" style="bottom: 20px;">
             <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
                 data-bs-toggle="dropdown" aria-expanded="false">
-                <img id="Usuario" src="/rsc/images/messi.webp" alt="" width="45" height="45"
+                <img id="Usuario" src="../rsc/images/messi.webp" alt="" width="45" height="45"
                     class="rounded-circle me-2">
                 <strong>Usuario</strong>
             </a>
@@ -230,10 +230,10 @@
     </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="/Clubes/Clubes_Funtion.js"></script>
-    <script src="/Bootstrap/js/bootstrap.bundle.min.js"></script>
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="Clubes_Funtion.js"></script>
+    <script src="../Bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

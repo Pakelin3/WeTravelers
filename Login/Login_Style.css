@@ -27,7 +27,7 @@
         height: 700px;
         padding: 25px;
         background-color: #ecf0f3;
-        box-shadow: 10px 10px 10px  #d1d9e683, 20px 20px 10px #f9f9f98c;
+        box-shadow: 10px 10px 10px #d1d9e683, 20px 20px 10px #f9f9f98c;
         border-radius: 12px;
         overflow: hidden;
     }
@@ -83,7 +83,7 @@
         font-size: 34px;
         font-weight: 700;
         line-height: 3;
-        color: #181818;
+        color: #ffffff;
     }
 
     .boton {
@@ -119,9 +119,9 @@
         z-index: 0;
     }
 
-.switch__title{
-    color: white;
-}
+    .switch__title {
+        color: white;
+    }
 
     .switch {
         display: flex;
@@ -136,7 +136,7 @@
         z-index: 200;
         transition: 1.25s;
         background-color: #242424;
-        color: #ecf0f3;
+        color: #ecf0f3 !important;
         overflow: hidden;
         box-shadow: 4px 4px 10px #35383b, -4px -4px 10px #3d3d3d;
     }
