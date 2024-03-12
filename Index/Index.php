@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="Index_Style.css">
 </head>
 
-<body>
+<body id="Cuerpito">
     <!--Cabecera de la pagina -->
     <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top" data-bs-theme="dark" style="height: 75px;">
         <div class="container-fluid">
@@ -38,7 +38,7 @@
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
+                            <li><a class="dropdown-item" href="../Login/Conexion/logout.php">Cerrar sesión</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -228,7 +228,7 @@
                 <li>
                     <hr class="dropdown-divider">
                 </li>
-                <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
+                <li><a class="dropdown-item" href="../Login/Conexion/logout.php">Cerrar sesión</a></li>
             </ul>
         </div>
     </div>
