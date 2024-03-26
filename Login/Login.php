@@ -46,7 +46,11 @@
                     $('#mensajeR').html(mensaje);
                     if (mensaje === 'Registro exitoso') {
                         setTimeout(function() {
-
+                            $('#switch_login').click();
+                            $('#name_R').val('');
+                            $('#email_R').val('');
+                            $('#password_R').val('');
+                            $('#mensajeR').html('');
                         }, 2000);
                     }
                 }
@@ -57,7 +61,7 @@
         <div class="contenedor b-contenedor" id="b-contenedor">
             <form class="form" id="b-form">
                 <h2 class="title">Acceder al sitio web</h2>
-                <div id="mensaje-error" style=" color: red;"></div>
+                <div id="mensajeL" style=" color: red;"></div>
                 <span class="form__span">Utilice su correo electrónico</span>
                 <input class="form__input" type="text" placeholder="Email" name="email_L" id="email_L" required
                     pattern=".*@.*" />
@@ -74,7 +78,6 @@
             const data = {
                 correo: document.getElementById('email_L').value,
                 pass: document.getElementById('password_L').value,
-
             }
 
             $.ajax({
@@ -87,7 +90,7 @@
                 },
 
                 success: function(mensaje) {
-                    $('#mensaje-error').html(mensaje);
+                    $('#mensajeL').html(mensaje);
                 }
             });
         }
@@ -99,7 +102,7 @@
                 <h2 class="title">Iniciar sesión </h2>
                 <p class="descripcion">Para mantenerse conectado con nosotros, inicie sesión con su información personal
                 </p>
-                <button class="switch__boton boton switch-btn">Inicia sesión</button>
+                <button class="switch__boton boton switch-btn" id="switch_login">Inicia sesión</button>
             </div>
 
             <div class="switch__contenedor is-hidden" id="switch-c2">
