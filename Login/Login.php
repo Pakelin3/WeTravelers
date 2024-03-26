@@ -15,47 +15,65 @@
     <div class="main">
         <div class="contenedor a-contenedor" id="a-contenedor">
             <form class="form" id="a-form">
-                <!-- ../Conexion/db.php -->
                 <h2 class="title">Crear cuenta</h2>
                 <div id="mensajeR" style=" color: red;"></div>
                 <span class="form__span">Use su email para registrarse</span>
                 <input class="form__input" type="text" placeholder="Nombre" name="name_R" id="name_R" />
-                <input class="form__input" type="text" placeholder="Email" name="email_R" id="email_R" required
-                    pattern=".*@.*" />
-                <input class="form__input" type="password" placeholder="Contraseña" name="password_R" id="password_R"
-                    required minlength="7" />
+                <input class="form__input" type="text" placeholder="Email" name="email_R" id="email_R" required pattern=".*@.*" />
+                <input class="form__input" type="password" placeholder="Contraseña" name="password_R" id="password_R" required minlength="7" />
                 <input class="boton subir" name="Reg_Bot" type="button" value="Registrarse" onclick="ajaxF_R();">
             </form>
         </div>
         <script>
-        function ajaxF_R() {
-            var nombre = $('#name_R').val();
-            var correo = $('#email_R').val();
-            var contraseña = $('#password_R').val();
+            function ajaxF_R() {
+                var nombre = $('#name_R').val();
+                var correo = $('#email_R').val();
+                var contraseña = $('#password_R').val();
 
-            $.ajax({
-                data: {
-                    'name_R': nombre,
-                    'email_R': correo,
-                    'password_R': contraseña
-                },
-                url: './BDD_Conexion/guardar_registro.php',
-                type: 'POST',
-                beforeSend: function() {},
-                success: function(mensaje) {
-                    $('#mensajeR').html(mensaje);
-                    if (mensaje === 'Registro exitoso') {
-                        setTimeout(function() {
-                            $('#switch_login').click();
-                            $('#name_R').val('');
-                            $('#email_R').val('');
-                            $('#password_R').val('');
-                            $('#mensajeR').html('');
-                        }, 2000);
-                    }
+                // Validar que ningún campo esté vacío
+                if (nombre === '' || correo === '' || contraseña === '') {
+                    alert('Por favor, completa todos los campos.');
+                    return;
                 }
-            });
-        }
+
+                // Validar el formato del correo electrónico
+                var emailPattern = /^\S+@\S+\.\S+$/;
+                if (!emailPattern.test(correo)) {
+                    alert('Por favor, introduce una dirección de correo electrónico válida.');
+                    return;
+                }
+
+                // Validar longitud de la contraseña y caracteres especiales
+                if (contraseña.length < 7 || !/[!@#$%^&*(),.?":{}|<>]/.test(contraseña)) {
+                    alert('La contraseña debe tener al menos 7 caracteres y contener al menos 2 caracteres especiales.');
+                    return;
+                }
+
+                // Si todas las validaciones pasan, enviar los datos del formulario
+
+                $.ajax({
+                    data: {
+                        'name_R': nombre,
+                        'email_R': correo,
+                        'password_R': contraseña
+                    },
+                    url: './BDD_Conexion/guardar_registro.php',
+                    type: 'POST',
+                    beforeSend: function() {},
+                    success: function(mensaje) {
+                        $('#mensajeR').html(mensaje);
+                        if (mensaje === 'Registro exitoso') {
+                            setTimeout(function() {
+                                $('#switch_login').click();
+                                $('#name_R').val('');
+                                $('#email_R').val('');
+                                $('#password_R').val('');
+                                $('#mensajeR').html('');
+                            }, 2500);
+                        }
+                    }
+                });
+            }
         </script>
 
         <div class="contenedor b-contenedor" id="b-contenedor">
@@ -63,37 +81,35 @@
                 <h2 class="title">Acceder al sitio web</h2>
                 <div id="mensajeL" style=" color: red;"></div>
                 <span class="form__span">Utilice su correo electrónico</span>
-                <input class="form__input" type="text" placeholder="Email" name="email_L" id="email_L" required
-                    pattern=".*@.*" />
-                <input class="form__input" type="password" placeholder="Contraseña" name="password_L" id="password_L"
-                    required minlength="2" />
+                <input class="form__input" type="text" placeholder="Email" name="email_L" id="email_L" required pattern=".*@.*" />
+                <input class="form__input" type="password" placeholder="Contraseña" name="password_L" id="password_L" required minlength="2" />
 
                 <a class="form__link">¿Ha olvidado su contraseña?</a>
                 <input type="button" class="boton subir" value="iniciar sesion" onclick="ajaxF_L();">
             </form>
         </div>
         <script>
-        function ajaxF_L() {
+            function ajaxF_L() {
 
-            const data = {
-                correo: document.getElementById('email_L').value,
-                pass: document.getElementById('password_L').value,
-            }
-
-            $.ajax({
-                data: data,
-                url: './BDD_Conexion/iniciar_sesion.php',
-                type: 'POST',
-
-                beforsend: function() {
-
-                },
-
-                success: function(mensaje) {
-                    $('#mensajeL').html(mensaje);
+                const data = {
+                    correo: document.getElementById('email_L').value,
+                    pass: document.getElementById('password_L').value,
                 }
-            });
-        }
+
+                $.ajax({
+                    data: data,
+                    url: './BDD_Conexion/iniciar_sesion.php',
+                    type: 'POST',
+
+                    beforsend: function() {
+
+                    },
+
+                    success: function(mensaje) {
+                        $('#mensajeL').html(mensaje);
+                    }
+                });
+            }
         </script>
 
 

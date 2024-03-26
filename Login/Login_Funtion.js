@@ -3,9 +3,7 @@ function changeForm(e) {
     setTimeout(function () {
         switchCtn.classList.remove('is-gx');
     }, 1500);
-
     switchCtn.classList.toggle('is-txr');
-
     switchC1.classList.toggle('is-hidden');
     switchC2.classList.toggle('is-hidden');
     acontenedor.classList.toggle('is-txl');
