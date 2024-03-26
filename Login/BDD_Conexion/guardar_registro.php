@@ -2,9 +2,9 @@
 include("Conexion.php");
 
 // Obtener los datos del formulario
-$nombre = $_POST['nameR'];
-$correo = $_POST['emailR'];
-$contraseña = $_POST['passwordR'];
+$nombre = $_POST['name_R'];
+$correo = $_POST['email_R'];
+$contraseña = $_POST['password_R'];
 $cifrado = password_hash($contraseña, PASSWORD_BCRYPT);
 
 // Verificar si el correo ya esta en uso

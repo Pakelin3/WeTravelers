@@ -4,8 +4,8 @@ session_start();
 
 include('Conexion.php');
 
-$correo = $_POST['correo'];
-$pass = $_POST['pass'];
+$correo = $_POST['email_L'];
+$pass = $_POST['password_L'];
 
 // Preparar la consulta con marcadores de posicion
 $stmt = $conn->prepare("SELECT * FROM $tabla WHERE correo = ?");
