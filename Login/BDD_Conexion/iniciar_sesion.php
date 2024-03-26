@@ -5,7 +5,7 @@ session_start();
 include('Conexion.php');
 
 $correo = $_POST['email_L'];
-$pass = $_POST['password_L'];
+$contraseña = $_POST['password_L'];
 
 // Preparar la consulta con marcadores de posicion
 $stmt = $conn->prepare("SELECT * FROM $tabla WHERE correo = ?");
@@ -19,7 +19,7 @@ if ($resultado->num_rows >= 1) {
     $consulta = $resultado->fetch_assoc();
 
     // Verificar la contraseña
-    if (password_verify($pass, $consulta['contraseña'])) {
+    if (password_verify($contraseña, $consulta['contraseña'])) {
         // Almacenar la identificación del usuario en la sesion
         $_SESSION['user_id'] = $consulta['id_usuario'];
         // Otros datos del usuario que desees almacenar en la sesion
