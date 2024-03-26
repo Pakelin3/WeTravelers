@@ -1,5 +1,5 @@
 <?php
-// Iniciar la sesión
+// Iniciar la sesion
 session_start();
 
 include('Conexion.php');
@@ -7,7 +7,7 @@ include('Conexion.php');
 $correo = $_POST['correo'];
 $pass = $_POST['pass'];
 
-// Preparar la consulta con marcadores de posición
+// Preparar la consulta con marcadores de posicion
 $stmt = $conn->prepare("SELECT * FROM $tabla WHERE correo = ?");
 $stmt->bind_param("s", $correo);
 $stmt->execute();
@@ -33,6 +33,6 @@ if ($resultado->num_rows >= 1) {
     echo 'Correo inválido o inexistente';
 }
 
-// Cerrar la consulta y la conexión
+// Cerrar la consulta y la conexion
 $stmt->close();
 $conn->close();

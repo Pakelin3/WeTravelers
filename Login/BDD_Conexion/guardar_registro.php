@@ -7,7 +7,7 @@ $correo = $_POST['emailR'];
 $contraseña = $_POST['passwordR'];
 $cifrado = password_hash($contraseña, PASSWORD_BCRYPT);
 
-// Verificar si el correo ya está en uso
+// Verificar si el correo ya esta en uso
 $sql_verificar_correo = "SELECT * FROM $tabla WHERE correo = ?";
 $stmt_verificar_correo = $conn->prepare($sql_verificar_correo);
 $stmt_verificar_correo->bind_param("s", $correo);
