@@ -83,7 +83,7 @@
         font-size: 34px;
         font-weight: 700;
         line-height: 3;
-        color: black;
+        color: #181818;
     }
 
     .boton {
@@ -136,7 +136,7 @@
         z-index: 200;
         transition: 1.25s;
         background-color: #242424;
-        color: #ecf0f3 !important;
+        color: #ecf0f3;
         overflow: hidden;
         box-shadow: 4px 4px 10px #35383b, -4px -4px 10px #3d3d3d;
     }
