@@ -24,11 +24,10 @@ if ($result_verificar_correo->num_rows > 0) {
 
     if ($stmt_insertar_usuario->execute()) {
         echo "Registro exitoso";
+        $stmt_verificar_correo->close();
+        $stmt_insertar_usuario->close();
+        $conn->close();
     } else {
         echo "Registro fallido";
     }
 }
-
-$stmt_verificar_correo->close();
-$stmt_insertar_usuario->close();
-$conn->close();

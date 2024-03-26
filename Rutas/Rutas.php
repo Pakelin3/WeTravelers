@@ -38,7 +38,8 @@
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
+                            <li><a class="dropdown-item" href="../Login/BDD_Conexion/Cerrar_sesion.php">Cerrar
+                                    sesión</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
