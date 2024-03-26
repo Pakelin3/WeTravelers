@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subir a Imgur</title>
+</head>
+
+<body>
+
+    <h1>Subir imagen a Imgur</h1>
+
+    <form id="uploadForm" enctype="multipart/form-data">
+        <input type="file" id="fileInput" name="image" accept="image/*">
+        <button type="button" onclick="uploadImage()">Subir Imagen</button>
+    </form>
+
+    <script>
+        function uploadImage() {
+            const fileInput = document.getElementById('fileInput');
+            const file = fileInput.files[0];
+
+            if (file) {
+                const formData = new FormData();
+                formData.append('image', file);
+
+                fetch('https://api.imgur.com/3/image', {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': '8367f661c2d3e5d',
+                    },
+                    body: formData,
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log('Respuesta de Imgur:', data);
+                        alert('Imagen subida correctamente. Enlace a Imgur: ' + data.data.link);
+                    })
+                    .catch(error => {
+                        console.error('Error al subir imagen a Imgur:', error);
+                        alert('Hubo un error al subir la imagen a Imgur.');
+                    });
+            } else {
+                alert('Selecciona una imagen antes de intentar subir.');
+            }
+        }
+    </script>
+
+</body>
+
+</html>
