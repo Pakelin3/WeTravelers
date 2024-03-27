@@ -18,21 +18,41 @@
         <div class="contenedor a-contenedor" id="a-contenedor">
             <form class="form" id="a-form">
                 <h2 class="title">Crear cuenta</h2>
-                <div id="mensajeR" style=" color: red;"></div>
+                <div id="mensajeR" style="color: red;"></div>
                 <span class="form__span">Use su email para registrarse</span>
                 <input class="form__input" type="text" placeholder="Nombre" name="name_R" id="name_R" />
                 <input class="form__input" type="text" placeholder="Email" name="email_R" id="email_R" required
                     pattern=".*@.*" />
                 <input class="form__input" type="password" placeholder="Contraseña" name="password_R" id="password_R"
                     required minlength="7" />
+                <ul>
+                    <li><strong>Continente:</strong> <span id="continent"></span></li>
+                    <li><strong>País:</strong> <span id="country"></span></li>
+                    <li><strong>Estado:</strong> <span id="state"></span></li>
+                </ul>
                 <input class="boton subir" name="Reg_Bot" type="button" value="Registrarse" onclick="ajaxF_R();">
             </form>
         </div>
+        <script type="text/javascript">
+        $.getJSON('http://ipwhois.app/json/', function(ip) {
+            $('#continent').text(ip.continent);
+            $('#country').text(ip.country);
+            $('#state').text(ip.region);
+
+            // Establecer los valores en los campos ocultos
+            $('#continent_input').val(ip.continent);
+            $('#country_input').val(ip.country);
+            $('#state_input').val(ip.region);
+        });
+        </script>
         <script>
         function ajaxF_R() {
             var nombre = $('#name_R').val();
             var correo = $('#email_R').val();
             var contraseña = $('#password_R').val();
+            var continente = $('#continent').text();
+            var pais = $('#country').text();
+            var estado = $('#state').text();
 
             // Validar que ningún campo este vacio
             if (nombre === '' || correo === '' || contraseña === '') {
@@ -54,12 +74,14 @@
             }
 
             // Si todas las validaciones pasan, enviar los datos del formulario
-
             $.ajax({
                 data: {
                     'name_R': nombre,
                     'email_R': correo,
-                    'password_R': contraseña
+                    'password_R': contraseña,
+                    'continent': continente,
+                    'country': pais,
+                    'state': estado
                 },
                 url: './BDD_Conexion/guardar_registro.php',
                 type: 'POST',
@@ -79,6 +101,7 @@
             });
         }
         </script>
+
 
         <div class="contenedor b-contenedor" id="b-contenedor">
             <form class="form" id="b-form">

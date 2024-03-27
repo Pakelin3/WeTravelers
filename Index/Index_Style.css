@@ -14,7 +14,7 @@
 
 .chat-list {
     min-height: 85px;
-    max-height: 350px;
+    max-height: 400px;
     overflow-y: auto;
 }
 
@@ -64,11 +64,14 @@
         overflow-x: auto;
         background: #fff;
         left: -400px;
-        display: none;
+        visibility: hidden;
+        /* Cambia display: none; a visibility: hidden; */
     }
 
     .chat-app .people-list.open {
         left: 0;
+        visibility: visible;
+        /* Asegúrate de que sea visible cuando está abierto */
     }
 
     .chat-app .chat {
@@ -91,7 +94,7 @@
 
 @media only screen and (min-width: 768px) and (max-width: 992px) {
     .chat-app .chat-list {
-        height: 650px;
+        height: 500px;
         overflow-x: auto;
     }
 
@@ -103,7 +106,7 @@
 
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 1) {
     .chat-app .chat-list {
-        height: 480px;
+        height: 400px;
         overflow-x: auto;
     }
 
@@ -133,7 +136,7 @@
 .card-header {
     padding: .75rem 15px;
     margin-bottom: 0;
-    background-color: #0c3d877a;
+    background-color: #e8b495;
     align-items: center;
     display: flex;
     justify-content: space-between;
@@ -141,7 +144,7 @@
 
 .card-body {
     padding: 15px;
-    background-color: #0c3d875e;
+    background-color: #e8b495;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -182,9 +185,7 @@
 
 .comentario {
     color: #CDCCCC;
-    width: 90%;
-    margin-left: 10px;
-    /* Ajusta este valor según tus necesidades */
+    width: 100%;
 }
 
 .feed-img-top {
@@ -226,6 +227,35 @@
         width: 100%;
         max-width: 400px;
     }
+}
+
+/* Estilo para ocultar el checkbox */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+}
+
+/* Estilo para el contenedor del corazón */
+.heart-label {
+    cursor: pointer;
+    margin-bottom: auto;
+}
+
+/* Estilo para el corazón */
+.heart-label svg {
+    fill: none;
+    stroke: currentColor;
+}
+
+/* Estilo para el corazón cuando el checkbox está activado */
+.toggle-heart:checked+.heart-label svg {
+    fill: red;
 }
 
 .btn_upload input {
@@ -344,4 +374,14 @@
 .error_msg {
     text-align: center;
     color: #f00
+}
+
+.btn_upload_photo input {
+    position: absolute;
+    left: 20px;
+    top: 82px;
+    width: 35px;
+    cursor: pointer;
+    opacity: 0;
+    z-index: 30;
 }
