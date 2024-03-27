@@ -8,25 +8,8 @@
     <link rel="stylesheet" href="../Bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="Index_Style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script>
-    // Utiliza una función autoinvocada para asegurar que el código se ejecute cuando jQuery esté disponible
-    (function($) {
-        // Tu código jQuery va aquí dentro
-        $(document).ready(function() {
-            cargarDatosUsuario(); // Llamada inicial para cargar los datos del usuario al cargar la página
 
-            function cargarDatosUsuario() {
-                $.ajax({
-                    url: '../Login/BDD_Conexion/cargar_datos_usuario.php',
-                    type: 'GET',
-                    success: function(response) {
-                        $('#user_info').html(response);
-                    }
-                });
-            }
-        });
-    })(jQuery); // Pasa jQuery como argumento para asegurar que $ sea una referencia a jQuery dentro de la función
-    </script>
+
 
 
 </head>
@@ -55,7 +38,25 @@
         </div>
     </nav>
 
+    <script>
+    // Utiliza una función autoinvocada para asegurar que el código se ejecute cuando jQuery esté disponible
+    (function($) {
+        // Tu código jQuery va aquí dentro
+        $(document).ready(function() {
+            cargarDatosUsuario(); // Llamada inicial para cargar los datos del usuario al cargar la página
 
+            function cargarDatosUsuario() {
+                $.ajax({
+                    url: '../Login/BDD_Conexion/cargar_datos_usuario.php',
+                    type: 'GET',
+                    success: function(response) {
+                        $('#user_info').html(response);
+                    }
+                });
+            }
+        });
+    })(jQuery); // Pasa jQuery como argumento para asegurar que $ sea una referencia a jQuery dentro de la función
+    </script>
 
 
     <!--Panel lateral-->
@@ -248,7 +249,6 @@
 
     <!-- Contenedor del feed -->
     <div id="feed-container" class="d-flex flex-wrap justify-content-around">
-
         <div class="card">
             <div class="card-header">
                 <div><img id="Usuario" src="../rsc/images/messi.webp" alt="" width="50" height="50"
@@ -272,8 +272,6 @@
                             <path d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
                         </svg>
                     </label>
-
-
                 </div>
                 <p class="publicacion-descripcion">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
                     non
@@ -323,34 +321,66 @@
     </div>
 
     <!-- Modal ver perfil -->
-    <div class="modal fade" id="Actualizar_perfil" tabindex="0" role="dialog"
-        aria-labelledby="Actualizar_perfilCenterTitle" aria-hidden="true">
+    <div class="modal fade" id="Ver_perfil" tabindex="-1" role="dialog" aria-labelledby="Ver_perfilLabel"
+        aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="Ver_perfilLabel">Perfil de Usuario</h5>
+                </div>
                 <div class="modal-body">
-                    <form action="">
-                        <div class="barra_progreso">
-                            <div class="processing_bar"></div>
-                        </div>
-                        <div class="error_msg"></div>
-                        <div class="uploaded_file_view" id="uploaded_view">
-                            <span class="file_remove">X</span>
-                        </div>
-                    </form>
+                    <div class="form-group">
+                        <label for="nombre">Nombre:</label>
+                        <p id="nombre"></p>
+                    </div>
+                    <div class="form-group">
+                        <label for="correo">Correo Electrónico:</label>
+                        <p id="correo"></p>
+                    </div>
+                    <div class="form-group">
+                        <label for="continente">Continente:</label>
+                        <p id="continente"></p>
+                    </div>
+                    <div class="form-group">
+                        <label for="pais">País:</label>
+                        <p id="pais"></p>
+                    </div>
+                    <div class="form-group">
+                        <label for="estado">Estado:</label>
+                        <p id="estado"></p>
+                    </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary actualizar_datos"
-                        data-dismiss="modal">Cancelar</button>
-                    <input type="button" class="btn btn-success" value="Actualizar perfil" onclick="actualizarPerfil()">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                 </div>
             </div>
         </div>
     </div>
 
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('#Ver_perfil').on('shown.bs.modal', function() {
+            $.ajax({
+                url: '../Login/BDD_Conexion/obtener_usuario.php',
+                type: 'GET',
+                dataType: 'json', // Especifica que se espera un JSON como respuesta
+                success: function(data) {
+                    $('#nombre').text(data.nombre);
+                    $('#correo').text(data.correo);
+                    $('#continente').text(data.continente);
+                    $('#pais').text(data.pais);
+                    $('#estado').text(data.estado);
+                },
+                error: function(xhr, status, error) {
+                    console.error(error);
+                }
+            });
+        });
+    });
     </script>
+
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
     </script>

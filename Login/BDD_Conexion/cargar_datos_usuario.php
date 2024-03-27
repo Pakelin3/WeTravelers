@@ -46,7 +46,7 @@ if (isset($_SESSION['id_usuario'])) {
         $response .= '<ul class="navbar-nav me-1 "><li class="nav-item dropdown">';
         $response .= '<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">';
         $response .= $nombre . '</a><ul class="dropdown-menu" style="margin-right: 150px;">';
-        $response .= '<li><button data-toggle="modal" data-target="#Actualizar_perfil" class="dropdown-item" type="button">Ver Perfil</button></li>';
+        $response .= '<li><button data-toggle="modal" data-target="#Ver_perfil" class="dropdown-item" type="button">Ver Perfil</button></li>';
         $response .= '<li><a class="dropdown-item" href="#">Localización</a></li>';
         $response .= '<li><hr class="dropdown-divider"></li>';
         $response .= '<li><a class="dropdown-item" href="../Login/BDD_Conexion/Cerrar_sesion.php">Cerrar sesión</a></li>';
@@ -63,7 +63,7 @@ if (isset($_SESSION['id_usuario'])) {
         $response .= '<ul class="navbar-nav me-1 "><li class="nav-item dropdown">';
         $response .= '<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">';
         $response .= 'Elije tu nombre de perfil</a><ul class="dropdown-menu" style="margin-right: 150px;">';
-        $response .= '<li><button data-toggle="modal" data-target="#Actualizar_perfil" class="dropdown-item" type="button">Ver Perfil</button></li>';
+        $response .= '<li><button data-toggle="modal" data-target="#Ver_perfil" class="dropdown-item" type="button">Ver Perfil</button></li>';
         $response .= '<li><a class="dropdown-item" href="#">Localización</a></li>';
         $response .= '<li><hr class="dropdown-divider"></li>';
         $response .= '<li><a class="dropdown-item" href="../Login/BDD_Conexion/Cerrar_sesion.php">Cerrar sesión</a></li>';

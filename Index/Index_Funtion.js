@@ -41,6 +41,3 @@ $(document).ready(function () {
         barra_progreso.removeClass("file_uploaded");
     });
 });
-
-
-
