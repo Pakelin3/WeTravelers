@@ -13,7 +13,8 @@ document.addEventListener('DOMContentLoaded', function () {
 $(document).ready(function () {
     var button_outer = $(".button_outer"),
         barra_progreso = $(".barra_progreso"),
-        upload_file = $(".upload_file");
+        upload_file = $(".upload_file"),
+        uploaded_view = $(".uploaded_file_view"); // Almacenar referencia al elemento .uploaded_file_view
 
     upload_file.on("change", function (e) {
         var ext = $(this).val().split('.').pop().toLowerCase();
@@ -27,16 +28,19 @@ $(document).ready(function () {
             }, 3000);
             var uploadedFile = URL.createObjectURL(e.target.files[0]);
             setTimeout(function () {
-                $(this).closest(".modal-content").find(".uploaded_file_view").append('<img src="' + uploadedFile + '" />').addClass("show");
-            }.bind(this), 3500);
+                // Usar la referencia al elemento .uploaded_file_view
+                uploaded_view.append('<img src="' + uploadedFile + '" />').addClass("show");
+            }, 3500);
         }
     });
 
     $(".file_remove").on("click", function (e) {
-        $(this).closest(".modal-content").find(".uploaded_file_view").removeClass("show").find("img").remove();
+        // Usar la referencia al elemento .uploaded_file_view
+        uploaded_view.removeClass("show").find("img").remove();
         barra_progreso.removeClass("file_uploading");
         barra_progreso.removeClass("file_uploaded");
     });
 });
+
 
 

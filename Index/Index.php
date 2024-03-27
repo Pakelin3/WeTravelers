@@ -312,14 +312,6 @@
                                 <input type="file" class="upload_file" name="">
                             </div>
                         </div>
-
-                        <div class="barra_progreso">
-                            <div class="processing_bar"></div>
-                        </div>
-                        <div class="error_msg"></div>
-                        <div class="uploaded_file_view" id="uploaded_view">
-                            <span class="file_remove">X</span>
-                        </div>
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -337,25 +329,6 @@
             <div class="modal-content">
                 <div class="modal-body">
                     <form action="">
-                        <input type="text" class="form-control" id="Nombre_perfil"
-                            placeholder="Ingrese aquí su nombre de perfil" style="margin-bottom: 15px;">
-
-                        <div class="button_outer btn btn-light btn-sm" style="margin-top: 10px;">
-                            <div class="btn_upload_photo">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-photo"
-                                    width="25" height="25" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <path d="M15 8h.01" />
-                                    <path
-                                        d="M3 6a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v12a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3v-12z" />
-                                    <path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l5 5" />
-                                    <path d="M14 14l1 -1c.928 -.893 2.072 -.893 3 0l3 3" />
-                                </svg>
-                                <input type="file" class="upload_file" name="">
-                            </div>
-                        </div>
-
                         <div class="barra_progreso">
                             <div class="processing_bar"></div>
                         </div>
@@ -369,66 +342,10 @@
                     <button type="button" class="btn btn-secondary actualizar_datos"
                         data-dismiss="modal">Cancelar</button>
                     <input type="button" class="btn btn-success" value="Actualizar perfil" onclick="actualizarPerfil()">
-
                 </div>
             </div>
         </div>
     </div>
-
-    <script>
-    function actualizarPerfil() {
-        var nombrePerfil = $("#Nombre_perfil").val();
-        var imagen = $(".upload_file")[0].files[0];
-        var formData = new FormData();
-        formData.append('image', imagen);
-
-        // Verificar si se seleccionó una imagen
-        if (imagen === undefined) {
-            alert('Por favor, seleccione una imagen.');
-            return;
-        }
-
-        // Enviar la imagen al servidor para cargarla
-        $.ajax({
-            url: '../Login/BDD_Conexion/subir_imagen.php',
-            type: 'POST',
-            data: formData,
-            contentType: false,
-            processData: false,
-            success: function(response) {
-                // Si la carga de la imagen fue exitosa, actualizar el perfil
-                var idImagen = response.trim();
-                if (idImagen !== '') {
-                    // Actualizar el campo fk_id_imagen en la tabla usuarios con el ID de la imagen
-                    $.ajax({
-                        url: '../Login/BDD_Conexion/actualizar_perfil.php', // Archivo PHP para actualizar el perfil
-                        type: 'POST',
-                        data: {
-                            nombrePerfil: nombrePerfil,
-                            idImagen: idImagen
-                        },
-                        success: function(response) {
-                            // Manejar la respuesta del servidor
-                            if (response.trim() === 'success') {
-                                // Si la actualización fue exitosa, mostrar un mensaje y cerrar el modal
-                                alert('Perfil actualizado correctamente.');
-                                $('#Actualizar_perfil').modal('hide');
-                            } else {
-                                // Si hubo un error en la actualización, mostrar un mensaje de error
-                                alert('Error al actualizar el perfil.');
-                            }
-                        }
-                    });
-                } else {
-                    // Si no se pudo obtener el ID de la imagen, mostrar un mensaje de error
-                    alert('Error al obtener el ID de la imagen.');
-                }
-            }
-        });
-    }
-    </script>
-
-
 
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
