@@ -49,7 +49,7 @@ if (isset($_SESSION['id_usuario'])) {
         $response .= '<li><button data-toggle="modal" data-target="#Ver_perfil" class="dropdown-item" type="button">Ver Perfil</button></li>';
         $response .= '<li><a class="dropdown-item" href="#">Localización</a></li>';
         $response .= '<li><hr class="dropdown-divider"></li>';
-        $response .= '<li><a class="dropdown-item" href="../Login/BDD_Conexion/Cerrar_sesion.php">Cerrar sesión</a></li>';
+        $response .= '<li><a class="dropdown-item" href="../BDD_Conexion/Cerrar_sesion.php">Cerrar sesión</a></li>';
         $response .= '</ul></li>';
         // $response .= '<li class="nav-item"><a class="nav-link" href="#">Notificaciones</a></li>';
         // $response .= '<li class="nav-item"><a class="nav-link" href="#">Mensajes</a></li>';
@@ -66,7 +66,7 @@ if (isset($_SESSION['id_usuario'])) {
         $response .= '<li><button data-toggle="modal" data-target="#Ver_perfil" class="dropdown-item" type="button">Ver Perfil</button></li>';
         $response .= '<li><a class="dropdown-item" href="#">Localización</a></li>';
         $response .= '<li><hr class="dropdown-divider"></li>';
-        $response .= '<li><a class="dropdown-item" href="../Login/BDD_Conexion/Cerrar_sesion.php">Cerrar sesión</a></li>';
+        $response .= '<li><a class="dropdown-item" href="../BDD_Conexion/Cerrar_sesion.php">Cerrar sesión</a></li>';
         $response .= '</ul></li>';
         // $response .= '<li class="nav-item"><a class="nav-link" href="#">Notificaciones</a></li>';
         // $response .= '<li class="nav-item"><a class="nav-link" href="#">Mensajes</a></li>';

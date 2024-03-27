@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE-edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="Login_Style.css">
+    <link rel="stylesheet" href="Index_Style.css">
     <title>WAYN Login</title>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -139,7 +139,7 @@
                         $('#mensajeL').html(mensaje);
                         if (mensaje === 'Inicio de sesión exitoso') {
                             setTimeout(function() {
-                                window.location.href = '../Index/Index.php';
+                                window.location.href = './Home/Home.php';
                             }, 2500);
 
                         }
@@ -164,7 +164,7 @@
             </div>
         </div>
     </div>
-    <script src="Login_Funtion.js"></script>
+    <script src="Index_Funtion.js"></script>
 </body>
 
 </html>

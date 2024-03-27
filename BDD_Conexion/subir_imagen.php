@@ -2,7 +2,7 @@
 include('Conexion.php');
 
 if ($_FILES['image']) {
-    $target_dir = "../../rsc/uploads/";
+    $target_dir = "../rsc/uploads/";
     $random_name = generateRandomName($target_dir, $_FILES["image"]["name"], $conn);
     $target_file = $target_dir . $random_name;
 

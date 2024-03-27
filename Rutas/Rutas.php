@@ -17,7 +17,7 @@
 
             function cargarDatosUsuario() {
                 $.ajax({
-                    url: '../Login/BDD_Conexion/cargar_datos_usuario.php',
+                    url: '../BDD_Conexion/cargar_datos_usuario.php',
                     type: 'GET',
                     success: function(response) {
                         $('#user_info').html(response);
@@ -33,7 +33,7 @@
     <!-- Cabecera de la página -->
     <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top" data-bs-theme="dark" style="height: 75px;">
         <div class="container-fluid">
-            <a class="navbar-brand" href="../Index/Index.php">We Travelers</a>
+            <a class="navbar-brand" href="../Home/Home.php">We Travelers</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -221,7 +221,7 @@
         }
         </style>
 
-        <a href="../Login/BDD_Conexion/Cerrar_sesion.php" class="cerrar_sesion order-1 btn btn-danger">
+        <a href="../BDD_Conexion/Cerrar_sesion.php" class="cerrar_sesion order-1 btn btn-danger">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                 class="icon icon-tabler icons-tabler-outline icon-tabler-logout-2">
