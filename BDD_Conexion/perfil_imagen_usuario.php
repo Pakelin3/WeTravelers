@@ -10,11 +10,14 @@ if (!isset($_SESSION['id_usuario'])) {
 
 // Verifica si se ha enviado una imagen
 if ($_FILES['image']) {
+    // Generar un nombre aleatorio para la imagen
+    $random_name = generateRandomName("../rsc/uploads/", $_FILES["image"]["name"]);
+
+    // Directorio donde se guardará la imagen
     $target_dir = "../rsc/uploads/";
-    $random_name = generateRandomName($target_dir, $_FILES["image"]["name"], $conn);
     $target_file = $target_dir . $random_name;
 
-    // Verifica si se ha movido la imagen al servidor correctamente
+    // Verifica si la inserción de la imagen fue exitosa
     if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
         // Inserta la imagen en la base de datos
         $query = "INSERT INTO imagenes (imagen) VALUES (?)";
@@ -22,9 +25,9 @@ if ($_FILES['image']) {
         mysqli_stmt_bind_param($stmt, "s", $random_name);
         $resultado = mysqli_stmt_execute($stmt);
 
-        // Verifica si la inserción de la imagen fue exitosa
+        // Verifica si la inserción en la base de datos fue exitosa
         if ($resultado) {
-            // Obtiene el ID de la imagen recién insertada
+            // Obtener el ID de la imagen recién insertada
             $id_imagen = mysqli_insert_id($conn);
 
             // Actualiza el ID de la imagen en el registro del usuario
@@ -36,7 +39,24 @@ if ($_FILES['image']) {
 
             // Verifica si la actualización fue exitosa
             if ($resultado_update) {
-                echo "Imagen subida y asignada al usuario correctamente.";
+                // Obtener el tipo de viajero seleccionado
+                if (isset($_POST['tipo_viajero'])) {
+                    $tipo_viajero = $_POST['tipo_viajero'];
+
+                    // Actualiza el tipo de viajero del usuario
+                    $query_tipo_viajero = "UPDATE usuarios SET fk_id_tipo_viajero = ? WHERE id_usuario = ?";
+                    $stmt_tipo_viajero = mysqli_prepare($conn, $query_tipo_viajero);
+                    mysqli_stmt_bind_param($stmt_tipo_viajero, "ii", $tipo_viajero, $id_usuario);
+                    $resultado_tipo_viajero = mysqli_stmt_execute($stmt_tipo_viajero);
+
+                    if ($resultado_tipo_viajero) {
+                        echo "Imagen subida, asignada al usuario y tipo de viajero actualizado correctamente.";
+                    } else {
+                        echo "Error al actualizar el tipo de viajero del usuario.";
+                    }
+                } else {
+                    echo "Error: No se ha seleccionado ningún tipo de viajero.";
+                }
             } else {
                 echo "Error al asignar la imagen al usuario.";
             }
@@ -44,21 +64,21 @@ if ($_FILES['image']) {
             echo "Error al guardar la imagen en la base de datos.";
         }
         mysqli_stmt_close($stmt);
-        mysqli_close($conn);
     } else {
         echo "Error al subir la imagen al servidor.";
     }
+    mysqli_close($conn);
 } else {
     echo "No se ha enviado ninguna imagen.";
 }
 
 // Función para generar un nombre aleatorio para la imagen
-function generateRandomName($target_dir, $original_name, $conn)
+function generateRandomName($target_dir, $original_name)
 {
     $random_name = "";
     do {
         $random_name = generateRandomString() . "_" . $original_name;
-    } while (file_exists($target_dir . $random_name) || checkExistingNameInDatabase($random_name, $conn));
+    } while (file_exists($target_dir . $random_name));
     return $random_name;
 }
 
@@ -71,17 +91,4 @@ function generateRandomString($length = 10)
         $randomString .= $characters[rand(0, strlen($characters) - 1)];
     }
     return $randomString;
-}
-
-// Función para verificar si el nombre de la imagen ya existe en la base de datos
-function checkExistingNameInDatabase($random_name, $conn)
-{
-    $query = "SELECT * FROM imagenes WHERE imagen = ?";
-    $stmt = mysqli_prepare($conn, $query);
-    mysqli_stmt_bind_param($stmt, "s", $random_name);
-    mysqli_stmt_execute($stmt);
-    mysqli_stmt_store_result($stmt);
-    $rows = mysqli_stmt_num_rows($stmt);
-    mysqli_stmt_close($stmt);
-    return $rows > 0;
 }
