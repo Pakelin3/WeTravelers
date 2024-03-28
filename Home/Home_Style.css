@@ -375,13 +375,3 @@
     text-align: center;
     color: #f00
 }
-
-.btn_upload_photo input {
-    position: absolute;
-    left: 20px;
-    top: 82px;
-    width: 35px;
-    cursor: pointer;
-    opacity: 0;
-    z-index: 30;
-}

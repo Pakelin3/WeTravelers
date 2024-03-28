@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE-edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="Index_Style.css">
-    <title>WAYN Login</title>
+    <title>We Travelers Login/Register</title>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
@@ -21,6 +21,7 @@
                 <div id="mensajeR" style="color: red;"></div>
                 <span class="form__span">Use su email para registrarse</span>
                 <input class="form__input" type="text" placeholder="Nombre" name="name_R" id="name_R" />
+                <input class="form__input" type="text" placeholder="Nombre de usuario" name="username_R" id="username_R" />
                 <input class="form__input" type="text" placeholder="Email" name="email_R" id="email_R" required pattern=".*@.*" />
                 <input class="form__input" type="password" placeholder="Contraseña" name="password_R" id="password_R" required minlength="7" />
                 <ul>
@@ -31,6 +32,7 @@
                 <input class="boton subir" name="Reg_Bot" type="button" value="Registrarse" onclick="ajaxF_R();">
             </form>
         </div>
+
         <script type="text/javascript">
             $.getJSON('http://ipwhois.app/json/', function(ip) {
                 $('#continent').text(ip.continent);
@@ -46,6 +48,7 @@
         <script>
             function ajaxF_R() {
                 var nombre = $('#name_R').val();
+                var username = $('#username_R').val();
                 var correo = $('#email_R').val();
                 var contraseña = $('#password_R').val();
                 var continente = $('#continent').text();
@@ -53,12 +56,12 @@
                 var estado = $('#state').text();
 
                 // Validar que ningún campo este vacio
-                if (nombre === '' || correo === '' || contraseña === '') {
+                if (nombre === '' || username === '' || correo === '' || contraseña === '') {
                     alert('Por favor, completa todos los campos.');
                     return;
                 }
 
-                // Validar el formato del correo electronico
+                // Validar el formato del correo electrónico
                 var emailPattern = /^\S+@\S+\.\S+$/;
                 if (!emailPattern.test(correo)) {
                     alert('Por favor, introduce una dirección de correo electrónico válida.');
@@ -71,10 +74,18 @@
                     return;
                 }
 
+                // Validar que el nombre de usuario no contenga caracteres especiales
+                var usernamePattern = /^[a-zA-Z0-9_]+$/;
+                if (!usernamePattern.test(username)) {
+                    alert('El nombre de usuario solo puede contener letras, números y guiones bajos.');
+                    return;
+                }
+
                 // Si todas las validaciones pasan, enviar los datos del formulario
                 $.ajax({
                     data: {
                         'name_R': nombre,
+                        'username_R': username,
                         'email_R': correo,
                         'password_R': contraseña,
                         'continent': continente,
@@ -88,11 +99,12 @@
                         $('#mensajeR').html(mensaje);
                         if (mensaje === 'Registro exitoso') {
                             setTimeout(function() {
-                                $('#switch_login').click();
                                 $('#name_R').val('');
+                                $('#username_R').val('');
                                 $('#email_R').val('');
                                 $('#password_R').val('');
                                 $('#mensajeR').html('');
+                                window.location.href = './Login/Perfil.php';
                             }, 2500);
                         }
                     }
@@ -101,6 +113,7 @@
         </script>
 
 
+        <!-- Agregamos un formulario de inicio de sesión -->
         <div class="contenedor b-contenedor" id="b-contenedor">
             <form class="form" id="b-form">
                 <h2 class="title">Acceder al sitio web</h2>
@@ -108,11 +121,11 @@
                 <span class="form__span">Utilice su correo electrónico</span>
                 <input class="form__input" type="text" placeholder="Email" name="email_L" id="email_L" required pattern=".*@.*" />
                 <input class="form__input" type="password" placeholder="Contraseña" name="password_L" id="password_L" required minlength="2" />
-
                 <a class="form__link">¿Ha olvidado su contraseña?</a>
-                <input type="button" class="boton subir" value="iniciar sesion" onclick="ajaxF_L();">
+                <input type="button" class="boton subir" value="Iniciar Sesión" onclick="ajaxF_L();">
             </form>
         </div>
+
         <script>
             function ajaxF_L() {
                 var correo = $('#email_L').val();
@@ -131,9 +144,7 @@
                     url: './BDD_Conexion/iniciar_sesion.php',
                     type: 'POST',
 
-                    beforsend: function() {
-
-                    },
+                    beforeSend: function() {},
 
                     success: function(mensaje) {
                         $('#mensajeL').html(mensaje);
@@ -141,7 +152,10 @@
                             setTimeout(function() {
                                 window.location.href = './Home/Home.php';
                             }, 2500);
-
+                        } else if (mensaje === 'Redirigir a perfil') {
+                            setTimeout(function() {
+                                window.location.href = './Login/Perfil.php';
+                            }, 2500);
                         }
                     }
                 });
@@ -149,10 +163,11 @@
         </script>
 
 
+
         <div class="switch" id="switch-cnt">
             <div class="switch__contenedor" id="switch-c1">
                 <h2 class="switch__title title">Iniciar sesión </h2>
-                <p class="descripcion">Para mantenerse conectado con nosotros, inicie sesión con su información personal
+                <p class="descripcion">Inicie sesión con su información personal para empezar la aventura
                 </p>
                 <button class="switch__boton boton switch-btn" id="switch_login">Inicia sesión</button>
             </div>
