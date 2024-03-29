@@ -193,6 +193,10 @@
     width: 100%;
 }
 
+.publicacion-descripcion {
+    max-width: 100%;
+}
+
 @media (max-width: 800px) {
     #feed-container {
         flex-direction: column;

@@ -97,10 +97,14 @@
                     margin-right: 0 !important;
                 }
 
+                #botonInicio {
+                    justify-content: center;
+                    margin-bottom: 10px !important;
+                }
             }
         </style>
         <div class="menus_botones">
-            <a href="#" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+            <a href="" id="botonInicio" class="d-flex align-items-center mb-md-0 me-md-auto text-white text-decoration-none">
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="40" height="40" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 15px;">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                     <path d="M5 12l-2 0l9 -9l9 9l-2 0" />
