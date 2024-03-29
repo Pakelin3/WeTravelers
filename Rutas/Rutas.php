@@ -1,3 +1,13 @@
+<?php
+session_start(); // Iniciar la sesión
+
+// Verificar si no hay una sesión activa
+if (!isset($_SESSION['id_usuario'])) {
+    // Redirigir al usuario al index.php
+    header("Location: ../index.php");
+    exit(); // Terminar el script para evitar que se ejecute más código
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 

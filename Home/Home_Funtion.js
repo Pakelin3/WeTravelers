@@ -27,16 +27,16 @@ $(document).ready(function () {
             barra_progreso.addClass("file_uploading");
             setTimeout(function () {
                 // barra_progreso.addClass("file_uploaded");
-            }, 3000);
+            }, 1000);
             var uploadedFile = URL.createObjectURL(e.target.files[0]);
             setTimeout(function () {
                 // Usar la referencia al elemento .uploaded_file_view
                 uploaded_view.append('<img src="' + uploadedFile + '" />').addClass("show");
-            }, 3500);
+            }, 1500);
         }
     });
 
-    $(".file_remove").on("click", function (e) {
+    $(".btn-secondary").on("click", function (e) {
         // Usar la referencia al elemento .uploaded_file_view
         uploaded_view.removeClass("show").find("img").remove();
         barra_progreso.removeClass("file_uploading");
