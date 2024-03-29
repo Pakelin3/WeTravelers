@@ -1,8 +1,6 @@
 <?php
 // Iniciar la sesión si aún no se ha iniciado
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
+session_start();
 
 // Verificar si se ha recibido el ID de la publicación
 if (isset($_POST['publicacionId'])) {
@@ -17,35 +15,47 @@ if (isset($_POST['publicacionId'])) {
         // Conectar a la base de datos (debes incluir tu archivo de conexión aquí)
         include('Conexion.php');
 
-        // Query para insertar el registro del like en la tabla me_gusta_publicaciones
-        $query = "INSERT INTO me_gusta_publicaciones (fk_id_usuario, fk_id_publicacion) VALUES (?, ?)";
+        // Verificar si ya existe un registro de 'me gusta' para esta publicación y usuario
+        $query_verificar = "SELECT id_me_gusta_publicacion FROM me_gusta_publicaciones WHERE fk_id_usuario = ? AND fk_id_publicacion = ?";
+        $stmt_verificar = mysqli_prepare($conn, $query_verificar);
+        mysqli_stmt_bind_param($stmt_verificar, "ii", $usuarioId, $publicacionId);
+        mysqli_stmt_execute($stmt_verificar);
+        mysqli_stmt_store_result($stmt_verificar);
 
-        // Preparar la consulta
-        $stmt = mysqli_prepare($conn, $query);
+        // Si ya existe un registro, eliminarlo
+        if (mysqli_stmt_num_rows($stmt_verificar) > 0) {
+            $query_eliminar = "DELETE FROM me_gusta_publicaciones WHERE fk_id_usuario = ? AND fk_id_publicacion = ?";
+            $stmt_eliminar = mysqli_prepare($conn, $query_eliminar);
+            mysqli_stmt_bind_param($stmt_eliminar, "ii", $usuarioId, $publicacionId);
+            $resultado_eliminar = mysqli_stmt_execute($stmt_eliminar);
 
-        // Verificar si la consulta se preparó correctamente
-        if ($stmt) {
-            // Vincular parámetros
-            mysqli_stmt_bind_param($stmt, "ii", $usuarioId, $publicacionId);
-
-            // Ejecutar la consulta
-            $resultado = mysqli_stmt_execute($stmt);
-
-            // Verificar si la consulta se ejecutó correctamente
-            if ($resultado) {
-                // Si se guardó el like correctamente, enviar una respuesta JSON con éxito
-                echo json_encode(array('success' => true));
+            if ($resultado_eliminar) {
+                // Si se eliminó correctamente, enviar una respuesta JSON con éxito
+                echo json_encode(array('success' => true, 'action' => 'unlike'));
             } else {
-                // Si ocurrió un error al guardar el like, enviar una respuesta JSON con el mensaje de error
+                // Si ocurrió un error al eliminar el like, enviar una respuesta JSON con el mensaje de error
+                echo json_encode(array('error' => 'Error al eliminar el like en la base de datos.'));
+            }
+        } else {
+            // Si no existe un registro, insertarlo
+            $query_insertar = "INSERT INTO me_gusta_publicaciones (fk_id_usuario, fk_id_publicacion) VALUES (?, ?)";
+            $stmt_insertar = mysqli_prepare($conn, $query_insertar);
+            mysqli_stmt_bind_param($stmt_insertar, "ii", $usuarioId, $publicacionId);
+            $resultado_insertar = mysqli_stmt_execute($stmt_insertar);
+
+            if ($resultado_insertar) {
+                // Si se insertó correctamente, enviar una respuesta JSON con éxito
+                echo json_encode(array('success' => true, 'action' => 'like'));
+            } else {
+                // Si ocurrió un error al insertar el like, enviar una respuesta JSON con el mensaje de error
                 echo json_encode(array('error' => 'Error al guardar el like en la base de datos.'));
             }
-
-            // Cerrar la declaración
-            mysqli_stmt_close($stmt);
-        } else {
-            // Si la consulta no se preparó correctamente, enviar una respuesta JSON con el mensaje de error
-            echo json_encode(array('error' => 'Error al preparar la consulta.'));
         }
+
+        // Cerrar las declaraciones
+        mysqli_stmt_close($stmt_verificar);
+        mysqli_stmt_close($stmt_insertar);
+        mysqli_stmt_close($stmt_eliminar);
 
         // Cerrar la conexión a la base de datos
         mysqli_close($conn);
@@ -55,5 +65,5 @@ if (isset($_POST['publicacionId'])) {
     }
 } else {
     // Si no se recibió el ID de la publicación, enviar una respuesta JSON con un mensaje de error
-    echo json_encode(array('error' => 'No se recibio el ID de la publicacion.'));
+    echo json_encode(array('error' => 'No se recibió el ID de la publicación.'));
 }
