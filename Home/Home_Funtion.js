@@ -10,6 +10,8 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
+
+
 $(document).ready(function () {
     var button_outer = $(".button_outer"),
         barra_progreso = $(".barra_progreso"),

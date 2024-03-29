@@ -242,19 +242,19 @@
 }
 
 /* Estilo para el contenedor del corazón */
-.heart-label {
+.heart-container {
     cursor: pointer;
     margin-bottom: auto;
 }
 
 /* Estilo para el corazón */
-.heart-label svg {
+.heart-container svg {
     fill: none;
     stroke: currentColor;
 }
 
-/* Estilo para el corazón cuando el checkbox está activado */
-.toggle-heart:checked+.heart-label svg {
+/* Estilo para el corazón cuando está activado (liked) */
+.heart-container.liked svg {
     fill: red;
 }
 
