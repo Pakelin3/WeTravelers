@@ -1,7 +1,7 @@
 <?php
 include('Conexion.php');
 
-// Verifica si el usuario está autenticado
+// Verifica si el usuario esta autenticado
 session_start();
 if (!isset($_SESSION['id_usuario'])) {
     echo "Error: Usuario no autenticado.";
@@ -13,11 +13,11 @@ if ($_FILES['image']) {
     // Generar un nombre aleatorio para la imagen
     $random_name = generateRandomName("../rsc/uploads/", $_FILES["image"]["name"]);
 
-    // Directorio donde se guardará la imagen
+    // Directorio donde se guardara la imagen
     $target_dir = "../rsc/uploads/";
     $target_file = $target_dir . $random_name;
 
-    // Verifica si la inserción de la imagen fue exitosa
+    // Verifica si la insercion de la imagen fue exitosa
     if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
         // Inserta la imagen en la base de datos
         $query = "INSERT INTO imagenes (imagen) VALUES (?)";
@@ -25,7 +25,7 @@ if ($_FILES['image']) {
         mysqli_stmt_bind_param($stmt, "s", $random_name);
         $resultado = mysqli_stmt_execute($stmt);
 
-        // Verifica si la inserción en la base de datos fue exitosa
+        // Verifica si la insercion en la base de datos fue exitosa
         if ($resultado) {
             // Obtener el ID de la imagen recién insertada
             $id_imagen = mysqli_insert_id($conn);
@@ -37,7 +37,7 @@ if ($_FILES['image']) {
             mysqli_stmt_bind_param($stmt_update, "ii", $id_imagen, $id_usuario);
             $resultado_update = mysqli_stmt_execute($stmt_update);
 
-            // Verifica si la actualización fue exitosa
+            // Verifica si la actualizacion fue exitosa
             if ($resultado_update) {
                 // Obtener el tipo de viajero seleccionado
                 if (isset($_POST['tipo_viajero'])) {
@@ -55,7 +55,7 @@ if ($_FILES['image']) {
                         echo "Error al actualizar el tipo de viajero del usuario.";
                     }
                 } else {
-                    echo "Error: No se ha seleccionado ningún tipo de viajero.";
+                    echo "Error: No se ha seleccionado ningun tipo de viajero.";
                 }
             } else {
                 echo "Error al asignar la imagen al usuario.";
@@ -72,7 +72,7 @@ if ($_FILES['image']) {
     echo "No se ha enviado ninguna imagen.";
 }
 
-// Función para generar un nombre aleatorio para la imagen
+// Funcion para generar un nombre aleatorio para la imagen
 function generateRandomName($target_dir, $original_name)
 {
     $random_name = "";
@@ -82,7 +82,7 @@ function generateRandomName($target_dir, $original_name)
     return $random_name;
 }
 
-// Función para generar una cadena aleatoria
+// Funcion para generar una cadena aleatoria
 function generateRandomString($length = 10)
 {
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';

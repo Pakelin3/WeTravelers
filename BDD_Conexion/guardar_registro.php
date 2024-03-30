@@ -6,12 +6,12 @@ $nombre = $_POST['name_R'];
 $username = $_POST['username_R'];
 $correo = $_POST['email_R'];
 $contraseña = $_POST['password_R'];
-$continente = $_POST['continent']; // Asegúrate de que estos valores se estén enviando desde el formulario
-$pais = $_POST['country']; // Asegúrate de que estos valores se estén enviando desde el formulario
-$estado = $_POST['state']; // Asegúrate de que estos valores se estén enviando desde el formulario
+$continente = $_POST['continent'];
+$pais = $_POST['country'];
+$estado = $_POST['state'];
 $cifrado = password_hash($contraseña, PASSWORD_BCRYPT);
 
-// Verificar si el correo y el nombre de usuario ya están en uso
+// Verificar si el correo y el nombre de usuario ya estan en uso
 $sql_verificar_datos = "SELECT * FROM $tabla WHERE correo = ? OR nombre_usuario = ?";
 $stmt_verificar_datos = $conn->prepare($sql_verificar_datos);
 $stmt_verificar_datos->bind_param("ss", $correo, $username);

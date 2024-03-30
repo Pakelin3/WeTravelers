@@ -1,17 +1,17 @@
 <?php
-include('Conexion.php'); // Asegúrate de incluir el archivo de conexión
+include('Conexion.php'); // Asegurate de incluir el archivo de conexion
 
-// Iniciar sesión si no está iniciada
+// Iniciar sesion si no está iniciada
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-// Verificar si el usuario ha iniciado sesión y tiene un ID de usuario almacenado en la sesión
+// Verificar si el usuario ha iniciado sesion y tiene un ID de usuario almacenado en la sesion
 if (isset($_SESSION['id_usuario'])) {
-    // Obtener el ID de usuario de la sesión
+    // Obtener el ID de usuario de la sesion
     $id_usuario = $_SESSION['id_usuario'];
 
-    // Consulta SQL para obtener la información del usuario
+    // Consulta SQL para obtener la informacion del usuario
     $query = "SELECT nombre, correo, continente, pais, estado FROM usuarios WHERE id_usuario = ?";
     $stmt = mysqli_prepare($conn, $query);
     mysqli_stmt_bind_param($stmt, "i", $id_usuario);
@@ -39,7 +39,7 @@ if (isset($_SESSION['id_usuario'])) {
         echo json_encode(array('error' => 'Usuario no encontrado'));
     }
 
-    // Cierra la conexión y la declaración
+    // Cierra la conexion y la declaracion
     mysqli_stmt_close($stmt);
     mysqli_close($conn);
 } else {

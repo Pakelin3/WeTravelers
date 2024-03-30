@@ -1,17 +1,16 @@
 <?php
-// Iniciar o reanudar la sesión
+// Iniciar o reanudar la sesion
 session_start();
 
-// Destruir todas las variables de sesión
+// Destruir todas las variables de sesion
 $_SESSION = array();
 
-// Si se desea eliminar la cookie de sesión, también se debe eliminar
-// la cookie. Nota: Esto destruirá la sesión y no solo los datos de sesión.
+// Diske borra los datos de las cookies, (cierra la sesion mas no los datos (algo asi funciona))
 if (isset($_COOKIE[session_name()])) {
     setcookie(session_name(), '', time() - 42000, '/');
 }
 
-// Finalmente, destruir la sesión
+// Finalmente, destruir la sesion
 session_destroy();
 
 // Redirigir al usuario a la página de inicio o a donde desees

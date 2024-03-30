@@ -1,18 +1,19 @@
 <?php
-// Incluir el archivo de conexión a la base de datos
+// Incluir el archivo de conexion a la base de datos
 include('Conexion.php');
 
-// Iniciar la sesión si aún no se ha iniciado
+// Iniciar la sesion si aun no se ha iniciado
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-// Consultar las publicaciones ordenadas por fecha (de la más reciente a la más antigua)
+// Consultar las publicaciones ordenadas por fecha (de la mas reciente a la mas antigua)
 $query = "SELECT 
     p.*, 
     u.nombre_usuario AS nombreUsuario, 
     i.imagen AS imagenPublicacion, 
     i2.imagen AS imagenUsuario,
+    ubicacion,
     COUNT(mg.id_me_gusta_publicacion) AS likes,
     COUNT(CASE WHEN mg.fk_id_usuario = ? THEN 1 END) AS usuario_dio_like
 FROM 
@@ -29,12 +30,13 @@ GROUP BY
     p.id_publicacion
 ORDER BY 
     p.fecha DESC
+
 ";
 $stmt = mysqli_prepare($conn, $query);
 if ($stmt) {
-    // Obtener el ID de usuario desde la sesión
+    // Obtener el ID de usuario desde la sesion
     $usuarioId = isset($_SESSION['id_usuario']) ? $_SESSION['id_usuario'] : null;
-    // Vincular parámetros
+    // Vincular parametros
     mysqli_stmt_bind_param($stmt, "i", $usuarioId);
     // Ejecutar la consulta
     mysqli_stmt_execute($stmt);
@@ -46,7 +48,7 @@ if ($stmt) {
         // Array para almacenar las publicaciones
         $publicaciones = array();
 
-        // Iterar sobre los resultados y guardar cada publicación en el array
+        // Iterar sobre los resultados y guardar cada publicacion en el array
         while ($fila = mysqli_fetch_assoc($resultado)) {
             $publicacion = array(
                 'id_publicacion' => $fila['id_publicacion'],
@@ -57,9 +59,9 @@ if ($stmt) {
                 'nombreUsuario' => $fila['nombreUsuario'],
                 'imagenUsuario' => '../rsc/uploads/' . $fila['imagenUsuario'],
                 'likes' => $fila['likes'], // Agregar el recuento de likes a la respuesta JSON
-                'usuario_dio_like' => $fila['usuario_dio_like'] // Agregar información sobre si el usuario dio like
+                'usuario_dio_like' => $fila['usuario_dio_like'] // Agregar informacion sobre si el usuario dio like
             );
-            // Agregar la publicación al array de publicaciones
+            // Agregar la publicacion al array de publicaciones
             $publicaciones[] = $publicacion;
         }
 
@@ -69,12 +71,11 @@ if ($stmt) {
         // Enviar un mensaje de error si no se pueden obtener las publicaciones
         echo json_encode(array('error' => 'No se pudieron obtener las publicaciones.'));
     }
-    // Cerrar la declaración
+    // Cerrar la declaracion
     mysqli_stmt_close($stmt);
 } else {
-    // Si la consulta no se preparó correctamente, enviar una respuesta JSON con el mensaje de error
+    // Si la consulta no se preparo correctamente, enviar una respuesta JSON con el mensaje de error
     echo json_encode(array('error' => 'Error al preparar la consulta.'));
 }
-
-// Cerrar la conexión a la base de datos
+// Cerrar la conexion a la base de datos
 mysqli_close($conn);

@@ -36,6 +36,7 @@ if ($_FILES['image']) {
             // Obtener los otros datos del formulario
             $titulo = $_POST['titulo'];
             $descripcion = $_POST['descripcion'];
+            $ubicacion = $_POST['ubicacion'];
 
             // Insertar los datos en la tabla de publicaciones
             $query_publicacion = "INSERT INTO publicaciones (fk_id_usuario, fk_id_imagen, titulo, descripcion, fecha, ubicacion) VALUES (?, ?, ?, ?, ?, ?)";
