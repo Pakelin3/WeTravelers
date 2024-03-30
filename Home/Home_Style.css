@@ -1,5 +1,5 @@
 #Cuerpito {
-    background: #ffffff !important;
+    background: #b0b0b0 !important;
 
 }
 
@@ -136,7 +136,7 @@
 .card-header {
     padding: .75rem 15px;
     margin-bottom: 0;
-    background-color: #e8b495;
+    background-color: #212529;
     align-items: center;
     display: flex;
     justify-content: space-between;
@@ -144,7 +144,7 @@
 
 .card-body {
     padding: 15px;
-    background-color: #e8b495;
+    background-color: #212529;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
