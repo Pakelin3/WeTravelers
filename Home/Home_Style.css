@@ -149,6 +149,8 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
+    border-bottom-left-radius: inherit;
+    border-bottom-right-radius: inherit;
 }
 
 #boton-opciones {

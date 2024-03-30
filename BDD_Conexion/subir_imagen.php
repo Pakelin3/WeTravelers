@@ -1,7 +1,7 @@
 <?php
 include('Conexion.php');
 
-// Verifica si el usuario está autenticado
+// Verifica si el usuario esta autenticedo
 session_start();
 if (!isset($_SESSION['id_usuario'])) {
     echo "Error: Usuario no autenticado.";
@@ -21,14 +21,14 @@ if ($_FILES['image']) {
         $resultado = mysqli_stmt_execute($stmt);
 
         if ($resultado) {
-            // Obtener el ID de la imagen recién insertada
+            // Obtener el ID de la imagen recien insertada
             $id_imagen = mysqli_insert_id($conn);
 
-            // Obtener el ID de usuario de la sesión actual
+            // Obtener el ID de usuario de la sesion actual
             $id_usuario = $_SESSION['id_usuario'];
 
-            // Obtener la ubicación actual (aquí deberías incluir tu lógica para obtener la ubicación)
-            $ubicacion = "Ubicación actual"; // Debes reemplazar esto con tu lógica para obtener la ubicación
+            // Obtener la ubicacion actual (aqui deberias incluir tu logica para obtener la ubicacion)
+            $ubicacion = "Ubicacion actual"; // Debes reemplazar esto con tu logica para obtener la ubicacion
 
             // Obtener la fecha actual
             $fecha = date("Y-m-d H:i:s");
@@ -45,9 +45,9 @@ if ($_FILES['image']) {
             $resultado_publicacion = mysqli_stmt_execute($stmt_publicacion);
 
             if ($resultado_publicacion) {
-                echo "Publicación creada exitosamente.";
+                echo "Publicacion creada exitosamente.";
             } else {
-                echo "Error al crear la publicación.";
+                echo "Error al crear la publicacion.";
             }
         } else {
             echo "Error al guardar la imagen en la base de datos.";
@@ -60,7 +60,7 @@ if ($_FILES['image']) {
     echo "No se ha enviado ninguna imagen.";
 }
 
-// Función para generar un nombre aleatorio para la imagen
+// Funcion para generar un nombre aleatorio para la imagen
 function generateRandomName($target_dir, $original_name, $conn)
 {
     $random_name = "";
@@ -70,7 +70,7 @@ function generateRandomName($target_dir, $original_name, $conn)
     return $random_name;
 }
 
-// Función para generar una cadena aleatoria
+// Funcion para generar una cadena aleatoria
 function generateRandomString($length = 10)
 {
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -81,7 +81,7 @@ function generateRandomString($length = 10)
     return $randomString;
 }
 
-// Función para verificar si el nombre de la imagen ya existe en la base de datos
+// Funcion para verificar si el nombre de la imagen ya existe en la base de datos
 function checkExistingNameInDatabase($random_name, $conn)
 {
     $query = "SELECT * FROM imagenes WHERE imagen = ?";
