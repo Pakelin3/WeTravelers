@@ -24,6 +24,6 @@ if (isset($_SESSION['id_usuario'])) {
     // verificar si el usuario es administrador
     if (esAdministrador($conn, $id_usuario)) {
         // el usuario es administrador, devuelve el codigo HTML del boton de administrador
-        echo '<a class="btn btn-outline-warning" href="../AdminLTE/index.html" type="button">Panel de Administrador</a>';
+        echo '<a class="btn btn-outline-warning" href="../AdminLTE/index.php" type="button">Panel de Administrador</a>';
     }
 }

@@ -12,24 +12,40 @@ if (isset($_SESSION['id_usuario'])) {
     $id_usuario = $_SESSION['id_usuario'];
 
     // Consulta SQL para obtener la informacion del usuario
-    $query = "SELECT nombre, correo, continente, pais, estado FROM usuarios WHERE id_usuario = ?";
+    $query = "SELECT
+    u.nombre,
+    u.nombre_usuario,
+    u.correo,
+    u.continente,
+    u.pais,
+    u.estado,
+    i.imagen AS imagen
+FROM
+    usuarios u
+JOIN imagenes i ON
+    u.fk_id_imagen = i.id_imagen
+WHERE
+    u.id_usuario = ?";
     $stmt = mysqli_prepare($conn, $query);
     mysqli_stmt_bind_param($stmt, "i", $id_usuario);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_store_result($stmt);
 
     // Vincula las columnas del resultado
-    mysqli_stmt_bind_result($stmt, $nombre, $correo, $continente, $pais, $estado);
+    mysqli_stmt_bind_result($stmt, $nombre, $nombre_usuario, $correo, $continente, $pais, $estado, $imagen);
+
 
     // Recorre los resultados
     if (mysqli_stmt_fetch($stmt)) {
         // Aquí tienes los datos del usuario en un array asociativo
         $data = array(
             'nombre' => $nombre,
+            'nombre_usuario' => $nombre_usuario,
             'correo' => $correo,
             'continente' => $continente,
             'pais' => $pais,
-            'estado' => $estado
+            'estado' => $estado,
+            'imagen' => $imagen
         );
 
         // Devuelve los datos del usuario como JSON
